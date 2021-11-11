@@ -14,15 +14,20 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: pwd
-      - run: ls -la .
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: project
   snyk:
     executor: node_docker
     steps:
+      - attach_workspace:
+          at: /home/circleci
       - run: npm run snyk
   test:
     executor: node_docker
     steps:
+      - attach_workspace:
+          at: /home/circleci
       - run: npm run test
 
 workflows:
