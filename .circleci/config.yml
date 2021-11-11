@@ -8,6 +8,9 @@ executors:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
 
+orbs:
+  snyk: snyk/snyk@1.1.2
+
 jobs:
   build:
     executor: node_docker
@@ -22,13 +25,13 @@ jobs:
     steps:
       - attach_workspace:
           at: /home/circleci
-      - run: npm run snyk
-  test:
+      - snyk/scan
+  mocha:
     executor: node_docker
     steps:
       - attach_workspace:
           at: /home/circleci
-      - run: npm run test
+      - run: npm run mocha
 
 workflows:
   build:
@@ -37,6 +40,6 @@ workflows:
       - snyk:
           requires:
             - build
-      - test:
+      - mocha:
           requires:
             - build

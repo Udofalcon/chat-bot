@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "mocha": "mocha tests/",
-    "snyk": "snyk test",
+    "mocha": "mocha './spec/**/*.js'",
+    "snyk": "snyk auth && snyk test",
     "test": "npm run snyk && npm run mocha"
   },
   "repository": {
