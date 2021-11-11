@@ -3,18 +3,18 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16.13.0
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: npm install
   snyk:
     docker:
-      - image: cimg/node:16.13.0
+      - image: cimg/node:lts
     steps:
       - run: npm run snyk
   test:
     docker:
-      - image: cimg/node:16.13.0
+      - image: cimg/node:lts
     steps:
       - run: npm run test
 
