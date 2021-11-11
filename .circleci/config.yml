@@ -1,25 +1,32 @@
 version: 2.1
 
-jobs:
-  build:
+executors:
+  node_docker:
     docker:
       - image: cimg/node:lts
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
+jobs:
+  build:
+    executor: node_docker
     steps:
       - checkout
       - run: npm install
+      - run: pwd
+      - run: ls -la .
   snyk:
-    docker:
-      - image: cimg/node:lts
+    executor: node_docker
     steps:
       - run: npm run snyk
   test:
-    docker:
-      - image: cimg/node:lts
+    executor: node_docker
     steps:
       - run: npm run test
 
 workflows:
-  main:
+  build:
     jobs:
       - build
       - snyk:
