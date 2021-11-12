@@ -39,7 +39,7 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: Udofalcon-patch-1
+              ignore: main
       - snyk:
           requires:
             - build
