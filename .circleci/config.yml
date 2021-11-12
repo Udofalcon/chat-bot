@@ -36,7 +36,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - build
+      - build:
           filters:
             branches:
               ignore: Udofalcon-patch-2
