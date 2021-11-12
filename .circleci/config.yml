@@ -1,0 +1,45 @@
+version: 2.1
+
+executors:
+  node_docker:
+    docker:
+      - image: cimg/node:lts
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+
+orbs:
+  snyk: snyk/snyk@1.1.2
+
+jobs:
+  build:
+    executor: node_docker
+    steps:
+      - checkout
+      - run: npm install
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: project
+  snyk:
+    executor: node_docker
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - snyk/scan
+  mocha:
+    executor: node_docker
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - run: npm run mocha
+
+workflows:
+  build:
+    jobs:
+      - build
+      - snyk:
+          requires:
+            - build
+      - mocha:
+          requires:
+            - build
