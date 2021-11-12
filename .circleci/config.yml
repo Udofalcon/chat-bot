@@ -36,7 +36,10 @@ jobs:
 workflows:
   build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: main
       - snyk:
           requires:
             - build
