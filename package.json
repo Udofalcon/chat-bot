@@ -1,8 +1,8 @@
 {
   "name": "chat-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An amalgamation of bots working together.",
-  "main": "app/index.js",
+  "main": "app/server.js",
   "directories": {
     "test": "tests"
   },

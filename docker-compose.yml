@@ -3,3 +3,5 @@ services:
     build: app
     ports:
       - "3000:3000"
+    volumes:
+      - ./app/:/usr/src/app
