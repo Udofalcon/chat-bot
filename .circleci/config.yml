@@ -16,6 +16,8 @@ jobs:
     executor: node_docker
     steps:
       - checkout
+      - run: cd app && npm install
+      - run: pwd && ls -la
       - run: npm install
       - persist_to_workspace:
           root: /home/circleci
