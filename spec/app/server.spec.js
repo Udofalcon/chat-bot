@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const sinon = require('sinon');
 const { app } = require('../../app/server.js');
 
 chai.use(chaiHttp);
@@ -7,6 +8,8 @@ chai.should();
 
 describe('Router', () => {
     it('/foobar', done => {
+        sinon.stub(console, 'error');
+
         chai.request(app)
             .get('/foobar')
             .end((err, res) => {
