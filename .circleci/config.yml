@@ -17,6 +17,8 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - run: pwd
+      - run: ls -la
       - persist_to_workspace:
           root: /home/circleci
           paths: project
@@ -31,6 +33,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /home/circleci
+      - run: pwd
+      - run: ls -la
       - run: npm run mocha:app
 
 workflows:
