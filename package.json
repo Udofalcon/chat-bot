@@ -8,8 +8,8 @@
   },
   "scripts": {
     "mocha": "mocha './spec/**/*.js'",
-    "snyk": "snyk test",
-    "test": "npm run snyk && npm run mocha"
+    "mocha:app": "mocha './spec/app/**/*.js'",
+    "snyk": "snyk test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Udofalcon/chat-bot#readme",
   "devDependencies": {
     "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "mocha": "^9.1.3",
     "snyk": "^1.759.0"
   }

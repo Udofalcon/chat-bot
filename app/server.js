@@ -12,6 +12,10 @@ app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}${dir}${req.url}`);
 });
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log(`Listening on *:${process.env.PORT || 3000}`);
-});
+if (require.main === module) {
+    server.listen(process.env.PORT || 3000, () => {
+        console.log(`Listening on *:${process.env.PORT || 3000}`);
+    });
+}
+
+module.exports = { app };

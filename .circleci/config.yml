@@ -26,12 +26,12 @@ jobs:
       - attach_workspace:
           at: /home/circleci
       - snyk/scan
-  mocha:
+  mocha_app:
     executor: node_docker
     steps:
       - attach_workspace:
           at: /home/circleci
-      - run: npm run mocha
+      - run: npm run mocha:app
 
 workflows:
   build:
@@ -43,6 +43,6 @@ workflows:
       - snyk:
           requires:
             - build
-      - mocha:
+      - mocha_app:
           requires:
             - build
