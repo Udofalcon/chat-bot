@@ -16,9 +16,14 @@ This will have:
 * A database
 * API linking it all together
 
-## Getting Started
+## Prerequisites
 1. [Install Docker](https://www.docker.com/)
 2. [Install nodejs](https://nodejs.org/en/) (16.13.0 LTS at time of writing)
-3. Run `npm install`
+3. If you're on Windows, [install git](https://gitforwindows.org/)
+4. Clone this code with `git clone https://github.com/Udofalcon/chat-bot.git`
+    * Fork this repository if you want to save your modifications on this site
+
+## Getting Started
+1. Run `npm install`
     * To do local Snyk scans, first make an account on [Snyk](https://snyk.io/) then authenticate with `./node_modules/snyk/bin/snyk auth`
-4. Run `start.sh`
+2. Run `start.sh`
